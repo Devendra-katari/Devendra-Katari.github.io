@@ -5,588 +5,772 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Katari Devendra — Software &amp; Python Developer</title>
 <meta name="description" content="Portfolio of Katari Devendra — Computer Science graduate. Python, Flask, computer vision, and data analysis projects.">
+<meta name="theme-color" content="#edeee7">
+<link rel="canonical" href="https://devendra-katari.github.io/">
+
+<!-- Open Graph / social preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Katari Devendra — Software &amp; Python Developer">
+<meta property="og:description" content="Computer Science graduate building with Python, Flask, computer vision, and data analysis. Case files inside.">
+<meta property="og:url" content="https://devendra-katari.github.io/">
+<meta property="og:image" content="https://devendra-katari.github.io/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Katari Devendra — Software &amp; Python Developer">
+<meta name="twitter:description" content="Computer Science graduate building with Python, Flask, computer vision, and data analysis.">
+
+<!-- Favicon: a small monogram "stamp" matching the dossier theme -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23edeee7'/%3E%3Crect x='4' y='4' width='56' height='56' rx='6' fill='none' stroke='%232f5d50' stroke-width='2.5' stroke-dasharray='4 3'/%3E%3Ctext x='32' y='42' font-family='Georgia, serif' font-size='30' font-weight='700' text-anchor='middle' fill='%232f5d50'%3EK%3C/text%3E%3C/svg%3E">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 
+<!-- Structured data for search engines -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Katari Devendra",
+  "url": "https://devendra-katari.github.io/",
+  "email": "mailto:devendrakatari455@gmail.com",
+  "jobTitle": "Software Developer",
+  "sameAs": [
+    "https://github.com/Devendra-katari",
+    "https://www.linkedin.com/in/katari-devendra-b7325a260"
+  ],
+  "knowsAbout": ["Python", "Flask", "Computer Vision", "Data Analysis", "SQL", "Java"]
+}
+</script>
+
 <style>
-  :root{
-    --bg: #edeee7;
-    --bg-card: #fbfbf8;
-    --ink: #1e231f;
-    --ink-muted: #5b6058;
-    --rule: #d3d5c8;
-    --pine: #2f5d50;
-    --pine-dim: #446a5f;
-    --ochre: #b8792a;
-    --rust: #a1432b;
-    --max-w: 860px;
-  }
+:root{
+  --bg: #edeee7;
+  --bg-card: #fbfbf8;
+  --ink: #1e231f;
+  --ink-muted: #5b6058;
+  --rule: #d3d5c8;
+  --pine: #2f5d50;
+  --pine-dim: #446a5f;
+  --ochre: #b8792a;
+  --rust: #a1432b;
+  --max-w: 860px;
+}
+*{ box-sizing:border-box; }
+::selection{ background: var(--pine); color: #fff; }
+html{ scroll-behavior:smooth; }
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
+}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--ink);
+  font-family:'Inter', sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+a{ color:inherit; }
 
-  *{ box-sizing:border-box; }
+/* ---------- skip link ---------- */
+.skip-link{
+  position:absolute;
+  left:12px; top:-48px;
+  background:var(--pine);
+  color:#fff;
+  padding:10px 16px;
+  border-radius:3px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px;
+  text-decoration:none;
+  z-index:100;
+  transition:top .15s ease;
+}
+.skip-link:focus{ top:12px; }
 
-  ::selection{ background: var(--pine); color: #fff; }
+/* ---------- sticky index (dossier tab nav) ---------- */
+.index-nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(237,238,231,0.92);
+  backdrop-filter:saturate(140%) blur(6px);
+  border-bottom:1px solid var(--rule);
+}
+.index-nav .wrap{ padding-top:0; padding-bottom:0; }
+.index-nav .index-nav-inner{
+  padding-left:0;
+  display:flex;
+  gap:2px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+@media (min-width:640px){
+  .index-nav .index-nav-inner{ padding-left:36px; }
+}
+.index-nav .index-nav-inner::-webkit-scrollbar{ display:none; }
+.index-nav a{
+  flex:0 0 auto;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  text-decoration:none;
+  color:var(--ink-muted);
+  padding:14px 12px;
+  border-bottom:2px solid transparent;
+  white-space:nowrap;
+  transition:color .15s ease, border-color .15s ease;
+}
+.index-nav a:hover, .index-nav a:focus-visible{
+  color:var(--pine);
+}
+.index-nav a.is-active{
+  color:var(--pine);
+  border-bottom-color:var(--pine);
+}
+.index-nav a:focus-visible{
+  outline:2px solid var(--pine);
+  outline-offset:-2px;
+}
 
-  html{ scroll-behavior:smooth; }
-
-  @media (prefers-reduced-motion: reduce){
-    html{ scroll-behavior:auto; }
-    *{ animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important; scroll-behavior:auto !important; }
-  }
-
-  body{
-    margin:0;
-    background:var(--bg);
-    color:var(--ink);
-    font-family:'Inter', sans-serif;
-    font-size:16px;
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-
-  a{ color:inherit; }
-
-  .wrap{
-    max-width:var(--max-w);
-    margin:0 auto;
-    padding:0 28px;
-  }
-
-  /* ---------- margin rule (notebook line) ---------- */
-  .wrap{
-    position:relative;
-  }
-  .wrap::before{
-    content:"";
-    position:absolute;
-    top:0; bottom:0;
-    left:56px;
-    width:1px;
-    background:var(--rule);
-    display:none;
-  }
-  @media (min-width:640px){
-    .wrap::before{ display:block; }
-  }
-
+.wrap{
+  max-width:var(--max-w);
+  margin:0 auto;
+  padding:0 28px;
+  position:relative;
+}
+.wrap::before{
+  content:"";
+  position:absolute;
+  top:0; bottom:0;
+  left:56px;
+  width:1px;
+  background:var(--rule);
+  display:none;
+}
+@media (min-width:640px){
+  .wrap::before{ display:block; }
+}
+section, header.masthead, footer{
+  padding-left: 0;
+}
+@media (min-width:640px){
   section, header.masthead, footer{
-    padding-left: 0;
+    padding-left:36px;
   }
-  @media (min-width:640px){
-    section, header.masthead, footer{
-      padding-left:36px;
-    }
-  }
+}
 
-  /* ---------- eyebrow / mono labels ---------- */
-  .eyebrow{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--pine);
-    margin:0 0 10px;
-  }
+.eyebrow{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12.5px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--pine);
+  margin:0 0 10px;
+}
+h1, h2, h3{
+  font-family:'Fraunces', serif;
+  font-weight:600;
+  margin:0;
+  color:var(--ink);
+}
 
-  h1, h2, h3{
-    font-family:'Fraunces', serif;
-    font-weight:600;
-    margin:0;
-    color:var(--ink);
-  }
+header.masthead{
+  padding-top:56px;
+  padding-bottom:40px;
+}
+header.masthead h1{
+  font-size:clamp(2.1rem, 5vw, 3rem);
+  line-height:1.08;
+  letter-spacing:-0.01em;
+}
+.role-line{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:14px;
+  color:var(--ink-muted);
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px 0;
+}
+.role-line span:not(:last-child)::after{
+  content:" · ";
+  color:var(--rule);
+}
+.contact-rail{
+  margin-top:26px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px 22px;
+  font-size:14.5px;
+}
+.contact-rail a{
+  text-decoration:none;
+  border-bottom:1px solid transparent;
+  padding-bottom:1px;
+  margin-right:22px;
+  transition:border-color .15s ease, color .15s ease;
+}
+.contact-rail a:last-child{ margin-right:0; }
+.contact-rail a:hover, .contact-rail a:focus-visible{
+  border-color: var(--pine);
+  color:var(--pine);
+}
+.contact-rail a:focus-visible{
+  outline:2px solid var(--pine);
+  outline-offset:3px;
+  border-radius:2px;
+}
 
-  /* ---------- masthead ---------- */
-  header.masthead{
-    padding-top:64px;
-    padding-bottom:40px;
-  }
+section{
+  padding:44px 0;
+  border-top:1px solid var(--rule);
+  scroll-margin-top:52px;
+}
+section:first-of-type{ border-top:1px solid var(--rule); }
+section > .eyebrow{ margin-bottom:16px; }
+.lede{
+  font-size:1.08rem;
+  max-width:64ch;
+  color:var(--ink);
+}
+.lede em{
+  font-style:normal;
+  color:var(--pine);
+  font-weight:600;
+}
+.margin-note{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  color:var(--ink-muted);
+  margin-top:18px;
+  padding-left:14px;
+  border-left:2px solid var(--ochre);
+}
 
-  header.masthead h1{
-    font-size:clamp(2.1rem, 5vw, 3rem);
-    line-height:1.08;
-    letter-spacing:-0.01em;
-  }
+/* ---------- scroll reveal ---------- */
+.reveal{
+  opacity:0;
+  transform:translateY(14px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+@media (prefers-reduced-motion: reduce){
+  .reveal{ opacity:1; transform:none; transition:none; }
+}
 
-  .role-line{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:14px;
-    color:var(--ink-muted);
-    margin-top:14px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:6px 0;
-  }
-  .role-line span:not(:last-child)::after{
-    content:" · ";
-    color:var(--rule);
-  }
+.skill-group{
+  margin-bottom:22px;
+}
+.skill-group:last-child{ margin-bottom:0; }
+.skill-group-label{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:var(--ink-muted);
+  margin-bottom:10px;
+}
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+.chip{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px;
+  padding:6px 12px;
+  border:1px solid var(--rule);
+  border-radius:3px;
+  background:var(--bg-card);
+  color:var(--ink);
+  transition:border-color .15s ease, transform .15s ease;
+}
+.chip:hover{
+  border-color:var(--pine);
+  transform:translateY(-1px);
+}
 
-  .contact-rail{
-    margin-top:26px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:10px 22px;
-    font-size:14.5px;
-  }
-  .contact-rail a{
-    text-decoration:none;
-    border-bottom:1px solid transparent;
-    padding-bottom:1px;
-    margin-right:22px;
-    transition:border-color .15s ease, color .15s ease;
-  }
-  .contact-rail a:last-child{ margin-right:0; }
-  .contact-rail a:hover, .contact-rail a:focus-visible{
-    border-color: var(--pine);
-    color:var(--pine);
-  }
-  .contact-rail a:focus-visible{
-    outline:2px solid var(--pine);
-    outline-offset:3px;
-    border-radius:2px;
-  }
+.case{
+  position:relative;
+  background:var(--bg-card);
+  border:1px solid var(--rule);
+  border-radius:4px;
+  padding:26px 26px 24px;
+  margin-bottom:28px;
+  overflow:visible;
+  transition:box-shadow .2s ease, border-color .2s ease, transform .2s ease;
+}
+.case:last-child{ margin-bottom:0; }
+.case:hover{
+  border-color:var(--pine-dim);
+  box-shadow:0 10px 28px -18px rgba(30,35,31,0.35);
+  transform:translateY(-2px);
+}
+.case-file-no{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11.5px;
+  color:var(--ink-muted);
+  letter-spacing:0.06em;
+  margin-bottom:6px;
+}
+.case h3{
+  font-size:1.4rem;
+  margin-bottom:8px;
+}
+.case p{
+  margin:12px 0 0;
+  color:var(--ink);
+  max-width:60ch;
+}
+.case-tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:7px;
+  margin-top:16px;
+}
+.case-tags span{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  color:var(--pine-dim);
+  background:#e7ece9;
+  padding:4px 9px;
+  border-radius:3px;
+}
+.case-links{
+  margin-top:18px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px;
+}
+.case-links a{
+  text-decoration:none;
+  color:var(--pine);
+  border-bottom:1px solid var(--pine);
+}
+.case-links a:hover, .case-links a:focus-visible{
+  color:var(--rust);
+  border-color:var(--rust);
+}
+.case-links a:focus-visible{
+  outline:2px solid var(--pine);
+  outline-offset:3px;
+}
 
-  /* ---------- sections ---------- */
-  section{
-    padding:44px 0;
-    border-top:1px solid var(--rule);
-  }
-  section:first-of-type{ border-top:1px solid var(--rule); }
-
-  section > .eyebrow{ margin-bottom:16px; }
-
-  .lede{
-    font-size:1.08rem;
-    max-width:64ch;
-    color:var(--ink);
-  }
-  .lede em{
-    font-style:normal;
-    color:var(--pine);
-    font-weight:600;
-  }
-
-  .margin-note{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--ink-muted);
-    margin-top:18px;
-    padding-left:14px;
-    border-left:2px solid var(--ochre);
-  }
-
-  /* ---------- skills ---------- */
-  .skill-group{
-    margin-bottom:22px;
-  }
-  .skill-group:last-child{ margin-bottom:0; }
-  .skill-group-label{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    letter-spacing:0.08em;
-    text-transform:uppercase;
-    color:var(--ink-muted);
-    margin-bottom:10px;
-  }
-  .chips{
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px;
-  }
-  .chip{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-    padding:6px 12px;
-    border:1px solid var(--rule);
-    border-radius:3px;
-    background:var(--bg-card);
-    color:var(--ink);
-  }
-
-  /* ---------- projects ---------- */
-  .case{
-    position:relative;
-    background:var(--bg-card);
-    border:1px solid var(--rule);
-    border-radius:4px;
-    padding:26px 26px 24px;
-    margin-bottom:28px;
-    overflow:visible;
-  }
-  .case:last-child{ margin-bottom:0; }
-
-  .case-file-no{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11.5px;
-    color:var(--ink-muted);
-    letter-spacing:0.06em;
-    margin-bottom:6px;
-  }
-
-  .case h3{
-    font-size:1.4rem;
-    margin-bottom:8px;
-  }
-
-  .case p{
-    margin:12px 0 0;
-    color:var(--ink);
-    max-width:60ch;
-  }
-
-  .case-tags{
-    display:flex;
-    flex-wrap:wrap;
-    gap:7px;
-    margin-top:16px;
-  }
-  .case-tags span{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--pine-dim);
-    background:#e7ece9;
-    padding:4px 9px;
-    border-radius:3px;
-  }
-
-  .case-links{
-    margin-top:18px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-  }
-  .case-links a{
-    text-decoration:none;
-    color:var(--pine);
-    border-bottom:1px solid var(--pine);
-  }
-  .case-links a:hover, .case-links a:focus-visible{
-    color:var(--rust);
-    border-color:var(--rust);
-  }
-  .case-links a:focus-visible{
-    outline:2px solid var(--pine);
-    outline-offset:3px;
-  }
-
-  /* stamp */
+.stamp{
+  position:absolute;
+  top:-14px;
+  right:18px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:11px;
+  letter-spacing:0.09em;
+  text-transform:uppercase;
+  padding:6px 11px;
+  border:1.5px dashed var(--pine);
+  color:var(--pine);
+  background:var(--bg-card);
+  transform:rotate(-3deg);
+  border-radius:3px;
+  white-space:nowrap;
+}
+.stamp.rust{
+  border-color:var(--rust);
+  color:var(--rust);
+  transform:rotate(2.5deg);
+}
+@media (max-width:520px){
   .stamp{
-    position:absolute;
-    top:-14px;
-    right:18px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px;
-    letter-spacing:0.09em;
-    text-transform:uppercase;
-    padding:6px 11px;
-    border:1.5px dashed var(--pine);
-    color:var(--pine);
-    background:var(--bg-card);
-    transform:rotate(-3deg);
-    border-radius:3px;
-    white-space:nowrap;
+    position:static;
+    display:inline-block;
+    transform:none;
+    margin-bottom:12px;
   }
-  .stamp.rust{
-    border-color:var(--rust);
-    color:var(--rust);
-    transform:rotate(2.5deg);
-  }
-  @media (max-width:520px){
-    .stamp{
-      position:static;
-      display:inline-block;
-      transform:none;
-      margin-bottom:12px;
-    }
-  }
+}
 
-  /* ---------- timeline (experience / education) ---------- */
-  .tl-item{
-    display:grid;
-    grid-template-columns: 128px 1fr;
-    gap:18px;
-    padding:16px 0;
-    border-top:1px solid var(--rule);
-  }
-  .tl-item:first-child{ border-top:none; padding-top:0; }
+.tl-item{
+  display:grid;
+  grid-template-columns: 128px 1fr;
+  gap:18px;
+  padding:16px 0;
+  border-top:1px solid var(--rule);
+}
+.tl-item:first-child{ border-top:none; padding-top:0; }
+.tl-date{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12.5px;
+  color:var(--ink-muted);
+  padding-top:3px;
+}
+.tl-body h3{
+  font-size:1.08rem;
+  margin-bottom:4px;
+}
+.tl-org{
+  font-size:14px;
+  color:var(--ink-muted);
+  margin-bottom:8px;
+}
+.tl-body ul{
+  margin:8px 0 0;
+  padding-left:18px;
+}
+.tl-body li{
+  margin-bottom:5px;
+  font-size:14.5px;
+}
+@media (max-width:560px){
+  .tl-item{ grid-template-columns:1fr; gap:4px; }
+}
 
-  .tl-date{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12.5px;
-    color:var(--ink-muted);
-    padding-top:3px;
-  }
+.cert-list{
+  list-style:none;
+  margin:0; padding:0;
+  display:grid;
+  gap:10px;
+}
+.cert-list li{
+  font-size:14.5px;
+  padding:12px 14px;
+  background:var(--bg-card);
+  border:1px solid var(--rule);
+  border-radius:3px;
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  flex-wrap:wrap;
+  transition:border-color .15s ease;
+}
+.cert-list li:hover{
+  border-color:var(--pine-dim);
+}
+.cert-list .cert-issuer{
+  font-family:'IBM Plex Mono', monospace;
+  font-size:12px;
+  color:var(--ink-muted);
+  white-space:nowrap;
+}
 
-  .tl-body h3{
-    font-size:1.08rem;
-    margin-bottom:4px;
-  }
-  .tl-org{
-    font-size:14px;
-    color:var(--ink-muted);
-    margin-bottom:8px;
-  }
-  .tl-body ul{
-    margin:8px 0 0;
-    padding-left:18px;
-  }
-  .tl-body li{
-    margin-bottom:5px;
-    font-size:14.5px;
-  }
+footer{
+  padding:40px 0 64px;
+  border-top:1px solid var(--rule);
+}
+footer .foot-name{
+  font-family:'Fraunces', serif;
+  font-size:1.3rem;
+  font-weight:600;
+}
+footer .foot-links{
+  margin-top:14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 20px;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:13px;
+}
+footer .foot-links a{
+  text-decoration:none;
+  color:var(--pine);
+  margin-right:20px;
+}
+footer .foot-links a:last-child{ margin-right:0; }
+footer .foot-links a:hover, footer .foot-links a:focus-visible{
+  color:var(--rust);
+}
+footer .print-line{
+  margin-top:28px;
+  font-size:12px;
+  color:var(--ink-muted);
+}
 
-  @media (max-width:560px){
-    .tl-item{ grid-template-columns:1fr; gap:4px; }
-  }
+/* ---------- back to top ---------- */
+.to-top{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:var(--pine);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  font-family:'IBM Plex Mono', monospace;
+  font-size:16px;
+  opacity:0;
+  pointer-events:none;
+  transform:translateY(8px);
+  transition:opacity .2s ease, transform .2s ease;
+  box-shadow:0 6px 18px -6px rgba(30,35,31,0.5);
+}
+.to-top.is-visible{
+  opacity:1;
+  pointer-events:auto;
+  transform:translateY(0);
+}
+.to-top:focus-visible{
+  outline:2px solid var(--ink);
+  outline-offset:3px;
+}
 
-  /* ---------- certifications ---------- */
-  .cert-list{
-    list-style:none;
-    margin:0; padding:0;
-    display:grid;
-    gap:10px;
-  }
-  .cert-list li{
-    font-size:14.5px;
-    padding:12px 14px;
-    background:var(--bg-card);
-    border:1px solid var(--rule);
-    border-radius:3px;
-    display:flex;
-    justify-content:space-between;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .cert-list .cert-issuer{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:12px;
-    color:var(--ink-muted);
-    white-space:nowrap;
-  }
-
-  /* ---------- footer ---------- */
-  footer{
-    padding:40px 0 64px;
-    border-top:1px solid var(--rule);
-  }
-  footer .foot-name{
-    font-family:'Fraunces', serif;
-    font-size:1.3rem;
-    font-weight:600;
-  }
-  footer .foot-links{
-    margin-top:14px;
-    display:flex;
-    flex-wrap:wrap;
-    gap:8px 20px;
-    font-family:'IBM Plex Mono', monospace;
-    font-size:13px;
-  }
-  footer .foot-links a{
-    text-decoration:none;
-    color:var(--pine);
-    margin-right:20px;
-  }
-  footer .foot-links a:last-child{ margin-right:0; }
-  footer .foot-links a:hover, footer .foot-links a:focus-visible{
-    color:var(--rust);
-  }
-  footer .print-line{
-    margin-top:28px;
-    font-size:12px;
-    color:var(--ink-muted);
-  }
-
-
+@media print{
+  .index-nav, .to-top, .skip-link{ display:none !important; }
+}
 </style>
 </head>
 <body>
 
+<a class="skip-link" href="#about">Skip to content</a>
+
+<nav class="index-nav" aria-label="Section index">
+  <div class="wrap">
+    <div class="index-nav-inner">
+      <a href="#about">About</a>
+      <a href="#skills">Toolbox</a>
+      <a href="#projects">Case Files</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+      <a href="#certifications">Certifications</a>
+    </div>
+  </div>
+</nav>
+
 <div class="wrap">
 
-  <header class="masthead">
-    <p class="eyebrow">Portfolio · Katari Devendra</p>
-    <h1>Katari Devendra</h1>
-    <p class="role-line">
-      <span>Software Developer</span>
-      <span>Python Developer</span>
-      <span>Data Analyst</span>
+<header class="masthead">
+  <p class="eyebrow">Portfolio · Katari Devendra</p>
+  <h1>Katari Devendra</h1>
+  <p class="role-line">
+    <span>Software Developer</span>
+    <span>Python Developer</span>
+    <span>Data Analyst</span>
+  </p>
+  <div class="contact-rail">
+    <a href="mailto:devendrakatari455@gmail.com">devendrakatari455@gmail.com</a>
+    <a href="tel:+916300461105">+91 6300461105</a>
+    <a href="https://github.com/Devendra-katari" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/katari-devendra-b7325a260" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+</header>
+
+<section id="about" class="reveal">
+  <p class="eyebrow">About</p>
+  <p class="lede">
+    Computer Science Engineering graduate with hands-on experience in <em>Python, Java, SQL, and Git</em>,
+    built through academic and personal projects. Led a final-year team as Team Leader to build a
+    computer-vision-based voting system, and completed an AI internship alongside job simulations in
+    data analytics and technology consulting — work that sharpened programming, problem-solving, and
+    analytical skills along the way.
+  </p>
+  <p class="margin-note">Looking for an entry-level role in software development, Python development, or data analysis.</p>
+</section>
+
+<section id="skills" class="reveal">
+  <p class="eyebrow">Toolbox</p>
+
+  <div class="skill-group">
+    <p class="skill-group-label">Languages</p>
+    <div class="chips">
+      <span class="chip">Python</span>
+      <span class="chip">Java</span>
+      <span class="chip">SQL</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <p class="skill-group-label">Frameworks &amp; Libraries</p>
+    <div class="chips">
+      <span class="chip">Flask</span>
+      <span class="chip">OpenCV</span>
+      <span class="chip">Pandas</span>
+      <span class="chip">NumPy</span>
+      <span class="chip">scikit-learn</span>
+      <span class="chip">Matplotlib</span>
+      <span class="chip">Seaborn</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <p class="skill-group-label">Tools</p>
+    <div class="chips">
+      <span class="chip">Git</span>
+      <span class="chip">SQLite</span>
+      <span class="chip">Jupyter</span>
+    </div>
+  </div>
+
+  <div class="skill-group">
+    <p class="skill-group-label">Core areas</p>
+    <div class="chips">
+      <span class="chip">Data Analysis</span>
+      <span class="chip">Data Science</span>
+      <span class="chip">Artificial Intelligence</span>
+      <span class="chip">Computer Vision</span>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <p class="eyebrow">Case Files</p>
+
+  <div class="case">
+    <span class="stamp">Identity Verified</span>
+    <p class="case-file-no">CASE FILE · 01</p>
+    <h3>Smart Voting System</h3>
+    <p>
+      A Flask web app that gates voting behind two factors: a Voter ID + password, then a live
+      face-verification check against the photo captured at registration. Built as team leader for
+      a final-year project — I designed the registration → face-capture → verification → voting
+      pipeline, and an SQLite schema to log every registration, login attempt, and vote for
+      traceability. Face matching runs on OpenCV's LBPH recognizer, chosen so the whole thing trains
+      and runs on a laptop with no GPU or external model download.
     </p>
-    <div class="contact-rail">
-      <a href="mailto:devendrakatari455@gmail.com">devendrakatari455@gmail.com</a>
-      <a href="tel:+916300461105">+91 6300461105</a>
-      <a href="https://github.com/Devendra-katari" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="https://www.linkedin.com/in/katari-devendra-b7325a260" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <div class="case-tags">
+      <span>Python</span>
+      <span>Flask</span>
+      <span>OpenCV</span>
+      <span>SQLite</span>
     </div>
-  </header>
+    <div class="case-links">
+      <a href="https://github.com/Devendra-katari/smart-voting-system" target="_blank" rel="noopener">View on GitHub ↗</a>
+    </div>
+  </div>
 
-  <section id="about">
-    <p class="eyebrow">About</p>
-    <p class="lede">
-      Computer Science Engineering graduate with hands-on experience in <em>Python, Java, SQL, and Git</em>,
-      built through academic and personal projects. Led a final-year team as Team Leader to build a
-      computer-vision-based voting system, and completed an AI internship alongside job simulations in
-      data analytics and technology consulting — work that sharpened programming, problem-solving, and
-      analytical skills along the way.
+  <div class="case">
+    <span class="stamp rust">AUC 0.80</span>
+    <p class="case-file-no">CASE FILE · 02</p>
+    <h3>Employee Attrition Prediction</h3>
+    <p>
+      A logistic regression model predicting which employees are likely to leave, trained on the
+      IBM HR Analytics dataset (1,470 employees, 35 features). Only ~16% of employees in the data
+      actually left, so the evaluation leans on precision, recall, and ROC-AUC rather than raw
+      accuracy — and the notebook compares a few decision thresholds since the default 0.5 cutoff
+      under-catches true leavers. Odds ratios pulled out overtime, frequent travel, and low job
+      satisfaction as the strongest risk factors, and tenure and stock options as the strongest
+      protective ones.
     </p>
-    <p class="margin-note">Looking for an entry-level role in software development, Python development, or data analysis.</p>
-  </section>
-
-  <section id="skills">
-    <p class="eyebrow">Toolbox</p>
-
-    <div class="skill-group">
-      <p class="skill-group-label">Languages</p>
-      <div class="chips">
-        <span class="chip">Python</span>
-        <span class="chip">Java</span>
-        <span class="chip">SQL</span>
-      </div>
+    <div class="case-tags">
+      <span>Python</span>
+      <span>Pandas</span>
+      <span>scikit-learn</span>
+      <span>Seaborn</span>
     </div>
-
-    <div class="skill-group">
-      <p class="skill-group-label">Frameworks &amp; Libraries</p>
-      <div class="chips">
-        <span class="chip">Flask</span>
-        <span class="chip">OpenCV</span>
-        <span class="chip">Pandas</span>
-        <span class="chip">NumPy</span>
-        <span class="chip">scikit-learn</span>
-        <span class="chip">Matplotlib</span>
-        <span class="chip">Seaborn</span>
-      </div>
+    <div class="case-links">
+      <a href="https://github.com/Devendra-katari/Employee-Attrition-Prediction" target="_blank" rel="noopener">View on GitHub ↗</a>
     </div>
+  </div>
+</section>
 
-    <div class="skill-group">
-      <p class="skill-group-label">Tools</p>
-      <div class="chips">
-        <span class="chip">Git</span>
-        <span class="chip">SQLite</span>
-        <span class="chip">Jupyter</span>
-      </div>
+<section id="experience" class="reveal">
+  <p class="eyebrow">Experience</p>
+
+  <div class="tl-item">
+    <p class="tl-date">May – Jul 2026</p>
+    <div class="tl-body">
+      <h3>Artificial Intelligence Intern</h3>
+      <p class="tl-org">Innoknowvex — Hyderabad, India</p>
+      <ul>
+        <li>Completed a 3-month AI internship, gaining practical exposure to core AI concepts and real-world applications.</li>
+        <li>Strengthened technical, analytical, and problem-solving skills through hands-on tasks and assignments.</li>
+        <li>Applied AI-related learning to practical exercises, building a stronger foundation in applied machine learning.</li>
+      </ul>
     </div>
+  </div>
+</section>
 
-    <div class="skill-group">
-      <p class="skill-group-label">Core areas</p>
-      <div class="chips">
-        <span class="chip">Data Analysis</span>
-        <span class="chip">Data Science</span>
-        <span class="chip">Artificial Intelligence</span>
-        <span class="chip">Computer Vision</span>
-      </div>
+<section id="education" class="reveal">
+  <p class="eyebrow">Education</p>
+
+  <div class="tl-item">
+    <p class="tl-date">2021 – 2025</p>
+    <div class="tl-body">
+      <h3>B.Tech, Computer Science &amp; Engineering</h3>
+      <p class="tl-org">Kalasalingam University</p>
     </div>
-  </section>
+  </div>
 
-  <section id="projects">
-    <p class="eyebrow">Case Files</p>
-
-    <div class="case">
-      <span class="stamp">Identity Verified</span>
-      <p class="case-file-no">CASE FILE · 01</p>
-      <h3>Smart Voting System</h3>
-      <p>
-        A Flask web app that gates voting behind two factors: a Voter ID + password, then a live
-        face-verification check against the photo captured at registration. Built as team leader for
-        a final-year project — I designed the registration → face-capture → verification → voting
-        pipeline, and an SQLite schema to log every registration, login attempt, and vote for
-        traceability. Face matching runs on OpenCV's LBPH recognizer, chosen so the whole thing trains
-        and runs on a laptop with no GPU or external model download.
-      </p>
-      <div class="case-tags">
-        <span>Python</span>
-        <span>Flask</span>
-        <span>OpenCV</span>
-        <span>SQLite</span>
-      </div>
-      <div class="case-links">
-        <a href="https://github.com/Devendra-katari/smart-voting-system" target="_blank" rel="noopener">View on GitHub ↗</a>
-      </div>
+  <div class="tl-item">
+    <p class="tl-date">2019 – 2021</p>
+    <div class="tl-body">
+      <h3>Intermediate (MPC)</h3>
+      <p class="tl-org">Narayana Junior College</p>
     </div>
+  </div>
+</section>
 
-    <div class="case">
-      <span class="stamp rust">AUC 0.80</span>
-      <p class="case-file-no">CASE FILE · 02</p>
-      <h3>Employee Attrition Prediction</h3>
-      <p>
-        A logistic regression model predicting which employees are likely to leave, trained on the
-        IBM HR Analytics dataset (1,470 employees, 35 features). Only ~16% of employees in the data
-        actually left, so the evaluation leans on precision, recall, and ROC-AUC rather than raw
-        accuracy — and the notebook compares a few decision thresholds since the default 0.5 cutoff
-        under-catches true leavers. Odds ratios pulled out overtime, frequent travel, and low job
-        satisfaction as the strongest risk factors, and tenure and stock options as the strongest
-        protective ones.
-      </p>
-      <div class="case-tags">
-        <span>Python</span>
-        <span>Pandas</span>
-        <span>scikit-learn</span>
-        <span>Seaborn</span>
-      </div>
-      <div class="case-links">
-        <a href="https://github.com/Devendra-katari/Employee-Attrition-Prediction" target="_blank" rel="noopener">View on GitHub ↗</a>
-      </div>
-    </div>
-  </section>
+<section id="certifications" class="reveal">
+  <p class="eyebrow">Certifications</p>
+  <ul class="cert-list">
+    <li><span>Python for Data Science, AI &amp; Development</span><span class="cert-issuer">IBM / Coursera</span></li>
+    <li><span>Data Analysis with Python</span><span class="cert-issuer">IBM / Coursera</span></li>
+    <li><span>Data Analytics Job Simulation</span><span class="cert-issuer">Deloitte Australia · Forage</span></li>
+    <li><span>Technology Consulting Job Simulation</span><span class="cert-issuer">PwC US · Forage</span></li>
+  </ul>
+</section>
 
-  <section id="experience">
-    <p class="eyebrow">Experience</p>
-
-    <div class="tl-item">
-      <p class="tl-date">May – Jul 2026</p>
-      <div class="tl-body">
-        <h3>Artificial Intelligence Intern</h3>
-        <p class="tl-org">Innoknowvex — Hyderabad, India</p>
-        <ul>
-          <li>Completed a 3-month AI internship, gaining practical exposure to core AI concepts and real-world applications.</li>
-          <li>Strengthened technical, analytical, and problem-solving skills through hands-on tasks and assignments.</li>
-          <li>Applied AI-related learning to practical exercises, building a stronger foundation in applied machine learning.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="education">
-    <p class="eyebrow">Education</p>
-
-    <div class="tl-item">
-      <p class="tl-date">2021 – 2025</p>
-      <div class="tl-body">
-        <h3>B.Tech, Computer Science &amp; Engineering</h3>
-        <p class="tl-org">Kalasalingam University</p>
-      </div>
-    </div>
-
-    <div class="tl-item">
-      <p class="tl-date">2019 – 2021</p>
-      <div class="tl-body">
-        <h3>Intermediate (MPC)</h3>
-        <p class="tl-org">Narayana Junior College</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="certifications">
-    <p class="eyebrow">Certifications</p>
-    <ul class="cert-list">
-      <li><span>Python for Data Science, AI &amp; Development</span><span class="cert-issuer">IBM / Coursera</span></li>
-      <li><span>Data Analysis with Python</span><span class="cert-issuer">IBM / Coursera</span></li>
-      <li><span>Data Analytics Job Simulation</span><span class="cert-issuer">Deloitte Australia · Forage</span></li>
-      <li><span>Technology Consulting Job Simulation</span><span class="cert-issuer">PwC US · Forage</span></li>
-    </ul>
-  </section>
-
-  <footer>
-    <p class="foot-name">Let's talk.</p>
-    <div class="foot-links">
-      <a href="mailto:devendrakatari455@gmail.com">devendrakatari455@gmail.com</a>
-      <a href="tel:+916300461105">+91 6300461105</a>
-      <a href="https://github.com/Devendra-katari" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/katari-devendra-b7325a260" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
-    <p class="print-line">Katari Devendra · Built with HTML &amp; CSS, hosted on GitHub Pages.</p>
-  </footer>
+<footer>
+  <p class="foot-name">Let's talk.</p>
+  <div class="foot-links">
+    <a href="mailto:devendrakatari455@gmail.com">devendrakatari455@gmail.com</a>
+    <a href="tel:+916300461105">+91 6300461105</a>
+    <a href="https://github.com/Devendra-katari" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/katari-devendra-b7325a260" target="_blank" rel="noopener">LinkedIn</a>
+  </div>
+  <p class="print-line">Katari Devendra · Built with HTML &amp; CSS, hosted on GitHub Pages.</p>
+</footer>
 
 </div>
+
+<a href="#top" class="to-top" id="toTop" aria-label="Back to top">↑</a>
+
+<script>
+(function(){
+  // Highlight the active section in the sticky index nav
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.index-nav a'));
+  var sections = navLinks.map(function(a){ return document.querySelector(a.getAttribute('href')); });
+
+  function setActive(){
+    var y = window.scrollY + 90;
+    var current = sections[0];
+    sections.forEach(function(sec){
+      if (sec && sec.offsetTop <= y) current = sec;
+    });
+    navLinks.forEach(function(a){
+      a.classList.toggle('is-active', current && a.getAttribute('href') === '#' + current.id);
+    });
+  }
+  document.addEventListener('scroll', setActive, { passive: true });
+  setActive();
+
+  // Scroll-reveal for sections
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+  }
+
+  // Back-to-top button visibility
+  var toTop = document.getElementById('toTop');
+  function toggleToTop(){
+    toTop.classList.toggle('is-visible', window.scrollY > 480);
+  }
+  document.addEventListener('scroll', toggleToTop, { passive: true });
+  toggleToTop();
+})();
+</script>
 
 </body>
 </html>
